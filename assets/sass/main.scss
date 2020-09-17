@@ -24,30 +24,11 @@ body {
   height: 100vh;
 
   .all-pokemon-box-left {
+    display: none;
+  }
+
+  .all-pokemon-box-left.active {
     display: block;
-    position: relative;
-    height: 490px;
-    width: 200px;
-    background: $green;
-
-    h5 {
-      font-size: 1.8rem;
-      text-align: center;
-      padding-top: 1rem;
-    }
-
-    .all-pokemon-list {
-      display: block;
-      position: relative;
-      top: 4%;
-      margin: 0 5%;
-      height: 85%;
-      width: 90%;
-      background: #fff;
-      overflow: auto;
-      font-size: 1.3rem;
-      text-align: center;
-    }
   }
 
   .pokedex-container {
@@ -57,12 +38,9 @@ body {
 
     .pokedex {
       display: block;
-      // width: 100%;
-      // max-width: 400px;
       width: 400px;
       height: 500px;
       background: $mainRed;
-      // margin: 50px auto;
       overflow: auto;
       position: relative;
 
@@ -71,6 +49,20 @@ body {
         font-size: 3rem;
         text-align: center;
         margin: 25px 0;
+      }
+
+      .poke-img {
+        width: 150px;
+        height: 150px;
+        border: 5px solid $grey;
+        display: block;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 5px;
+
+        img {
+          width: 100%;
+        }
       }
 
       h3 {
@@ -82,23 +74,26 @@ body {
 
       form {
         text-align: center;
-      }
 
-      input[type="text"] {
-        font-size: 2rem;
-        margin: 25px auto;
-        display: block;
-        border-radius: 5px;
-        border: 1px solid $grey;
-        text-align: center;
-      }
+        input[type="text"] {
+          font-size: 2rem;
+          margin: 25px auto;
+          display: block;
+          border-radius: 5px;
+          border: 1px solid $grey;
+          text-align: center;
+        }
 
-      .btn {
-        display: inline-block;
-        padding: 20px;
-        background: $blue;
-        color: white;
-        cursor: pointer;
+        .btn-styles {
+          display: inline-block;
+          padding: 20px;
+          width: 110px;
+          margin: 0 5px;
+          border-radius: 5px;
+          background: $blue;
+          color: white;
+          cursor: pointer;
+        }
       }
 
       .loading-container {
@@ -119,44 +114,105 @@ body {
     }
 
     .all-pokemon-box-bottom {
+      display: none;
+    }
+
+    .all-pokemon-box-bottom.active {
       display: block;
-      position: relative;
-      height: 300px;
-      width: 95%;
+    }
+  }
+}
+.all-pokemon-box {
+  display: block;
+  position: relative;
+  height: 490px;
+  width: 300px;
+  background: $green;
+
+  h5 {
+    font-size: 1.8rem;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .all-pokemon-list {
+    display: block;
+    position: relative;
+    top: 4%;
+    margin: 0 5%;
+    height: 84%;
+    width: 90%;
+    background: #fff;
+    overflow: auto;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+
+    div {
+      padding: 5px 0;
+      border: 1px solid black;
+    }
+
+    div:hover {
+      color: white;
       background: orange;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    .pokedex-container {
+      .pokedex {
+        width: 300px;
+        height: 310px;
+
+        h1 {
+          font-weight: 500;
+          font-size: 2rem;
+          margin: 15px 0;
+        }
+
+        .poke-img {
+          height: 100px;
+          width: 100px;
+        }
+
+        h3 {
+          font-weight: 500;
+          font-size: 1.2rem;
+          margin: 15px 0;
+        }
+
+        form {
+          input[type="text"] {
+            font-size: 1.2rem;
+            margin: 15px auto;
+          }
+
+          .btn-styles {
+            padding: 10px;
+            width: 90px;
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+
+    .all-pokemon-box-bottom {
+      height: 240px;
+      width: 290px;
 
       h5 {
-        font-size: 1.8rem;
-        text-align: center;
-        padding-top: 1rem;
+        font-size: 1.5rem;
+        padding: 0.8rem 0;
       }
 
       .all-pokemon-list {
-        display: block;
-        position: relative;
-        top: 4%;
-        margin: 0 5%;
-        height: 75%;
-        width: 90%;
-        background: #fff;
-        overflow: auto;
-        font-size: 1.3rem;
-        text-align: center;
+        top: 0;
+        height: 72%;
+        font-size: 1.1rem;
       }
-    }
-  }
-
-  .poke-img {
-    width: 150px;
-    height: 150px;
-    border: 5px solid $grey;
-    display: block;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 5px;
-
-    img {
-      width: 100%;
     }
   }
 }
