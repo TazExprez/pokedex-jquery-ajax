@@ -27,20 +27,21 @@ $(function () {
     });
 
     loadAllPokemon.done(function (data) {
-      $(".loading-container").removeClass("active");
-
       for (i in data.results) {
         $(".all-pokemon-list").append(
           "<div>" + data.results[i].name.toUpperCase() + "</div>"
         );
       }
+
+      $(".loading-container").removeClass("active");
     });
 
-    loadAllPokemon.fail(function (jqXHR, textStatus, erro) {
+    loadAllPokemon.fail(function (jqXHR, textStatus, error) {
       alert("Request failed: " + textStatus + error);
     });
   };
 
+  // Here you are executing the initFunc function, which will perform the two ajax get requests above in order to retrieve the initial pokemon's name and image for the pokedex's main element and the names of all of the pokemon for the left and bottom slide out elements.
   initFunc();
 
   // Here you are assigning a click handler to the element that has the .btn class.  When you click this element, you will get the value of whatever is inside of the input element.  After this, a get ajax request will be executed, if the input was valid.  This request will return a pokemon's information and an image and the name of this pokemon will be displayed.
@@ -83,9 +84,11 @@ $(function () {
     });
   });
 
+  // These two variables keep track of whether the left or bottom elements that contain the pokemon lists are open.
   var isAllPokemonBoxLeftOpen = false;
   var isAllPokemonBoxBottomOpen = false;
 
+  // This function will display the left or bottom element that contains the pokemon list.  Which element is opened will depend on the screen size.
   $(".show-all-pokemon").on("click", function () {
     $(".pokedex input[type='text']").val("");
 
@@ -111,6 +114,7 @@ $(function () {
     }
   });
 
+  // This function will detect if the screen is resized and it will check if one of the two elements that contains the list of pokemon is open.  If the screen is resized and one of the elements is showing, it will automatically close that element and open the other, if the new screen size requires it.
   $(window).resize(function () {
     if ($(window).width() >= 768 && isAllPokemonBoxBottomOpen) {
       $(".all-pokemon-box-bottom").removeClass("active");
