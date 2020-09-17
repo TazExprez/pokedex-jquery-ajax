@@ -94,9 +94,11 @@ $(function () {
 
       if ($(window).width() >= 768) {
         $(".all-pokemon-box-left").addClass("active");
+        $(".pokedex").addClass("active");
         isAllPokemonBoxLeftOpen = true;
       } else {
         $(".all-pokemon-box-bottom").addClass("active");
+        $(".pokedex").addClass("active");
         isAllPokemonBoxBottomOpen = true;
       }
     } else {
@@ -104,6 +106,7 @@ $(function () {
       isAllPokemonBoxBottomOpen = false;
       $(".all-pokemon-box-left").removeClass("active");
       $(".all-pokemon-box-bottom").removeClass("active");
+      $(".pokedex").removeClass("active");
       $(".show-all-pokemon").text("Show All");
     }
   });

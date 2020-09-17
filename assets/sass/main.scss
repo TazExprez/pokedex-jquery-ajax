@@ -24,11 +24,13 @@ body {
   height: 100vh;
 
   .all-pokemon-box-left {
-    display: none;
+    display: block;
+    transform: translate3d(150px, 0, 0);
+    transition: all 0.5s ease-in-out;
   }
 
   .all-pokemon-box-left.active {
-    display: block;
+    transform: translate3d(0, 0, 0);
   }
 
   .pokedex-container {
@@ -37,12 +39,18 @@ body {
     align-items: center;
 
     .pokedex {
+      transform: translate3d(-150px, 0, 0);
+      transition: all 0.5s ease-in-out;
       display: block;
       width: 400px;
       height: 500px;
       background: $mainRed;
       overflow: auto;
       position: relative;
+
+      &.active {
+        transform: translate3d(0, 0, 0);
+      }
 
       h1 {
         font-weight: 700;
@@ -115,10 +123,11 @@ body {
 
     .all-pokemon-box-bottom {
       display: none;
+      transform: translate3d(0, -120px, 0);
     }
 
     .all-pokemon-box-bottom.active {
-      display: block;
+      transform: translate3d(0, 0, 0);
     }
   }
 }
@@ -162,10 +171,21 @@ body {
 
 @media only screen and (max-width: 767px) {
   .container {
+    .all-pokemon-box-left {
+      display: none;
+    }
+
     .pokedex-container {
       .pokedex {
         width: 300px;
         height: 310px;
+        transform: translate3d(0, 120px, 0);
+        transition: all 0.5s ease-in-out;
+        z-index: 20;
+
+        &.active {
+          transform: translate3d(0, 0, 0);
+        }
 
         h1 {
           font-weight: 500;
@@ -197,22 +217,48 @@ body {
           }
         }
       }
-    }
 
-    .all-pokemon-box-bottom {
-      height: 240px;
-      width: 290px;
+      .all-pokemon-box-bottom {
+        display: block;
+        height: 240px;
+        width: 290px;
+        transform: translate3d(0, -120px, 0);
+        transition: all 0.5s ease-in-out;
+        z-index: 10;
 
-      h5 {
-        font-size: 1.5rem;
-        padding: 0.8rem 0;
-      }
+        &.active {
+          transform: translate3d(0, 0, 0);
+        }
 
-      .all-pokemon-list {
-        top: 0;
-        height: 72%;
-        font-size: 1.1rem;
+        h5 {
+          font-size: 1.5rem;
+          padding: 0.8rem 0;
+        }
+
+        .all-pokemon-list {
+          top: 0;
+          height: 72%;
+          font-size: 1.1rem;
+        }
       }
     }
   }
+
+  //   .all-pokemon-box-bottom {
+  //     display: block;
+  //     height: 240px;
+  //     width: 290px;
+
+  //     h5 {
+  //       font-size: 1.5rem;
+  //       padding: 0.8rem 0;
+  //     }
+
+  //     .all-pokemon-list {
+  //       top: 0;
+  //       height: 72%;
+  //       font-size: 1.1rem;
+  //     }
+  //   }
+  // }
 }
